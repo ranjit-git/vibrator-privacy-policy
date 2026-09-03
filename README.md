@@ -69,3 +69,9 @@ This Privacy Policy may be updated from time to time. Any changes will be reflec
 
 If you have any questions or suggestions about this Privacy Policy, please contact the developer at:  
 [pahan.ranjit.0201@gmail.com](mailto:pahan.ranjit.0201@gmail.com)
+
+## 10. Disclaimer (Battery and Hardware Usage)
+
+The App utilizes your device's physical vibration motor (haptic engine). Continuous or prolonged use of the vibration motor can consume battery power significantly faster than normal device usage and may cause the device to become warm. 
+
+To help preserve device health and battery life, the App includes a default Auto-Stop Timer (set to 5 minutes) which will automatically halt the vibration. By using the App, you acknowledge and accept that you are responsible for monitoring your device's battery and temperature levels during prolonged use.
