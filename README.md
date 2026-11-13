@@ -1,111 +1,152 @@
 # Privacy Policy for Vibrator Pro
 
-**Effective Date:** July 17, 2026  
-**Last updated:** October 12, 2026
+**Effective Date:** July 9, 2026  
+**Last Updated:** November 14, 2026
 
 ## 1. Introduction
 
-Your privacy is important to us. This Privacy Policy explains how "Vibrator Pro" (the "App") collects, uses, and discloses information when you use our mobile application.
+Your privacy is important to us. This Privacy Policy explains how **Vibrator Pro** (the "App"), developed by **ranjit pahan** ("we", "us", or "our"), handles information when you use our mobile application across supported platforms (Android and iOS).
 
-The App is designed to provide customizable vibration and haptic sensations. The core haptic features operate locally on your device. To provide and support our services, the App integrates **Google Firebase (Crashlytics & Analytics)** for diagnostics and app improvement, **Google AdMob** for advertising, and **Google Play In-App Billing** for processing in-app purchases.
+The App is designed to provide customizable vibration patterns, massage rhythms, and haptic feedback. While all haptic sensations and pattern algorithms execute strictly locally on your device, the App integrates industry-standard third-party services—including **Google AdMob**, **Google Firebase** (Analytics, Crashlytics, and Remote Config), and **Google Play / Apple App Store In-App Billing**—to serve advertisements, monitor app stability, deliver dynamic updates, and process optional in-app purchases.
 
-## 2. Data Collection and Usage
+---
 
-The App does not require user account registration, login, or personal profile creation. We do not collect personally identifiable information (PII) such as your name, email address, physical address, phone number, contacts, photos, audio, or precise GPS location.
+## 2. Information Collection and Usage
+
+We do not require user account registration, login credentials, or personal profile creation. We do not collect or store personally identifiable information (PII) such as your name, physical address, email address, phone number, contacts, microphone audio, camera captures, or precise GPS location.
 
 ### A. Locally Stored Data
-The App stores certain user preferences locally on your device using local storage (`SharedPreferences`). This includes:
-- Vibration speed preferences and selected pattern.
-- Auto-stop timer configurations.
-- App UI theme preferences and language selections.
-- In-App Purchase status (e.g., whether the "Remove Ads" feature has been unlocked).
+The App stores user preferences locally on your device using platform-native storage (`SharedPreferences` on Android, `UserDefaults` on iOS). This data remains exclusively on your device and includes:
+- Vibration speed preferences, intensity levels, and selected patterns.
+- Auto-stop timer duration configurations.
+- App UI theme selection (Dark, Light, AMOLED) and language preferences.
+- Session counters used to determine in-app review prompts and update dialogs.
+- In-App Purchase state (e.g., whether permanent "Remove Ads" is active) and temporary ad-free reward expiration timestamps.
 
-This data never leaves your device and is used solely to maintain your settings across app sessions.
+### B. Diagnostics and Crash Reporting (Firebase Crashlytics)
+To maintain stability and promptly resolve bugs, technical diagnostic data is automatically collected via **Firebase Crashlytics** when an unexpected error or crash occurs:
+- Stack traces, error logs, and exception details.
+- Device state metrics at the time of an event (operating system version, device model, screen orientation, free RAM, and storage space).
+- Crash diagnostics are retained for 90 days by Firebase and are used strictly for technical debugging and quality assurance.
 
-### B. Diagnostics and Crash Data (Firebase Crashlytics)
-If the App encounters an error or crash, technical diagnostics are automatically collected via **Firebase Crashlytics** to help us identify and resolve issues. This includes:
-- Stack traces, error logs, and crash timestamps.
-- Device state information at the time of the crash (operating system version, device model, orientation, available memory).
-
-Crash logs are used strictly for bug fixes and stability improvements and are not shared with third-party advertisers.
-
-### C. Usage and Analytics Data (Firebase Analytics)
-We use **Firebase Analytics** to understand general app performance and user engagement. This includes:
-- Anonymous app interactions (e.g., frequency of pattern usage, taps on the cross-promotion screen).
-- General device metrics (device model, OS version, locale, app version).
+### C. Usage and Product Analytics (Firebase Analytics & Remote Config)
+We use **Firebase Analytics** and **Firebase Remote Config** to assess app performance, optimize feature delivery, and fetch dynamic app settings:
+- Aggregated, non-personally identifiable app interactions (e.g., pattern selection frequency, screen navigation events, session duration).
+- Device specifications (device model, OS version, locale/language, app build number).
 - Firebase App Instance Identifiers.
+- Dynamic feature toggles, ad frequency thresholds, and version update checks fetched securely over HTTPS.
 
 ### D. Advertising and Device Identifiers (Google AdMob)
-Unless you have purchased the "Remove Ads" premium feature, the App uses **Google AdMob** to display advertisements (banner ads, interstitial ads, and app-open ads). AdMob may collect and process:
-- **Google Advertising ID (GAID / IDFA):** A unique, resettable advertising identifier assigned to your device.
-- **Device Identifiers:** Hardware specifications, network provider, and general IP-derived location (country/city level).
-- **Ad Interaction Data:** Information regarding ads served, viewed, or clicked.
+Unless you have activated an ad-free tier (via the "Remove Ads" in-app purchase or by unlocking temporary ad-free access through a rewarded ad), the App displays advertisements provided by **Google AdMob** (banner ads, interstitial ads, app open ads, and rewarded video ads).
 
-This data is used to deliver relevant ads, measure ad performance, prevent ad fraud, and comply with advertising standards.
+Google AdMob may collect and process:
+- **Mobile Advertising Identifiers:** Google Advertising ID (GAID on Android) or Identifier for Advertisers (IDFA on iOS).
+- **Device & Technical Identifiers:** IP address (used for approximate coarse location at country/city level), cellular carrier, and device hardware characteristics.
+- **Ad Performance Metrics:** Ads served, viewed, clicked, and user engagement frequency.
+
+This data is used to serve contextual or personalized advertisements, measure ad performance, prevent fraudulent clicks, and enforce ad frequency caps.
+
+---
 
 ## 3. Required Device Permissions
 
-The App requests the following permissions to operate:
+The App requests only the device permissions strictly necessary for its features:
 
-- **`android.permission.VIBRATE`:** Enables the App to trigger and control the physical vibration motor and haptic feedback engine.
-- **`android.permission.WAKE_LOCK`:** Keeps the CPU and screen active while a vibration session is in progress, preventing the operating system from interrupting your selected pattern.
-- **`android.permission.INTERNET`:** Enables the App to load advertisements, verify in-app purchases, and transmit crash reports and analytics.
-- **`android.permission.ACCESS_NETWORK_STATE`:** Allows the App to verify network connectivity before requesting ads or processing in-app purchases.
-- **`com.android.vending.BILLING`:** Allows the App to interface with the Google Play Store billing system for in-app purchases ("Remove Ads").
-- **`com.google.android.gms.permission.AD_ID`:** Required on Android 13 (API 33) and above to enable Google AdMob to access the Google Advertising ID for ad personalization, frequency capping, and fraud prevention.
+- **Vibration & Haptics Control (`android.permission.VIBRATE` / iOS `Core Haptics`):**
+  - Enables the App to trigger and control the physical vibration actuator and haptic engine to deliver selected patterns.
+- **Wakelock (`android.permission.WAKE_LOCK`):**
+  - Keeps the processor and screen active during active vibration sessions, preventing the operating system from suspending the vibration engine while a pattern is running.
+- **Network Access (`android.permission.INTERNET` & `android.permission.ACCESS_NETWORK_STATE`):**
+  - Allows the App to verify network connectivity, fetch Remote Config settings, transmit crash logs, load advertisements, and validate in-app purchases.
+- **In-App Billing (`com.android.vending.BILLING` / StoreKit):**
+  - Facilitates communication with the Google Play Store or Apple App Store billing systems for processing purchases.
+- **Advertising ID (`com.google.android.gms.permission.AD_ID`):**
+  - Required on Android 13+ (API 33+) to allow Google AdMob to access the Google Advertising ID for ad frequency capping, fraud prevention, and compliant ad delivery.
 
-None of these permissions are used to collect personal communications, media files, or confidential personal data.
+The App does **not** request or access camera, microphone, contacts, SMS, phone call records, background location, or external media files.
 
-## 4. In-App Purchases ("Remove Ads")
+---
 
-The App offers an optional, one-time In-App Purchase to permanently remove all advertisements ("Remove Ads"). 
+## 4. In-App Purchases and Rewarded Access
 
-- **Payment Processing:** All transactions are processed directly and securely through Google Play In-App Billing. We do not collect, process, or store your credit card details, bank information, or payment credentials.
-- **Ad Disablement:** Once the "Remove Ads" product is purchased or restored, all AdMob ad units and related ad tracking requests are permanently disabled within the App.
+The App offers options to enjoy an ad-free experience:
 
-## 5. European Economic Area (EEA) & UK Privacy (GDPR Compliance)
+1. **Permanent "Remove Ads" Purchase:**
+   - Available as a one-time In-App Purchase.
+   - **Payment Security:** All transactions are securely processed by the Google Play Store (Google Play Billing) or Apple App Store (StoreKit). We never receive, process, or store credit card numbers, banking details, or billing addresses.
+   - Once purchased, all advertising requests (banners, interstitials, and app open ads) are permanently disabled.
+2. **Temporary Rewarded Access:**
+   - Users may choose to watch a rewarded video ad to receive a temporary ad-free pass (e.g., 2 hours). No financial transaction or payment data is collected during this process.
 
-If you are located in the European Economic Area (EEA) or the United Kingdom, your data is protected under the General Data Protection Regulation (GDPR) and UK GDPR:
+---
 
-- **User Messaging Platform (UMP):** On your initial launch of the App, Google's UMP consent form is presented. You have the right to grant, manage, or refuse consent for personalized advertising and data processing cookies/identifiers.
-- **Legal Basis:** We process analytics and crash reporting on the basis of our legitimate interest in maintaining and improving the App. Advertising identifiers and ad personalization are processed based on your explicit consent where required by law.
-- **Revoking or Changing Consent:** In compliance with Google's EU User Consent Policy, European users may change or revoke their consent choices at any time. Simply navigate to **Settings > Legal > Ad Privacy Settings** within the App to re-open the consent management form and adjust your preferences.
+## 5. European Economic Area (EEA), UK, and Switzerland (GDPR Compliance)
 
-## 6. Third-Party Services and Data Sharing
+If you reside in the EEA, United Kingdom, or Switzerland, your data protection rights are governed by the General Data Protection Regulation (GDPR) and UK GDPR:
 
-We do not sell your personal data. However, limited technical data and advertising identifiers are shared with third-party service providers as described below:
+- **User Messaging Platform (UMP) Consent:** On your initial app launch, a Google-certified Consent Management Platform (CMP) dialog is displayed. You have the right to grant, customize, or decline consent for personalized advertising, device identifiers, and vendor processing.
+- **Legal Grounds for Processing:** We process crash and analytical diagnostics under the legal basis of legitimate interest to ensure app reliability. Advertising identifiers and personalized ad delivery are processed solely upon your explicit consent where mandated by law.
+- **Revoking or Modifying Consent:** You can review or change your privacy and ad consent preferences at any time directly within the App by navigating to **Settings > Legal > Ad Privacy Settings**.
 
-- **Google Firebase (Crashlytics & Analytics):**  
-  Privacy Policy: [https://firebase.google.com/support/privacy](https://firebase.google.com/support/privacy)
-- **Google AdMob (Google Mobile Ads):**  
-  Privacy Policy: [https://policies.google.com/technologies/ads](https://policies.google.com/technologies/ads)  
-  Google Partner Policy: [https://policies.google.com/technologies/partner-sites](https://policies.google.com/technologies/partner-sites)
-- **Google Play Billing:**  
-  Privacy Policy: [https://policies.google.com/privacy](https://policies.google.com/privacy)
+---
 
-## 7. Data Retention and Deletion
+## 6. United States State Privacy Laws (CCPA / CPRA)
 
-- **Local Data:** App preferences and purchase statuses stored on your device can be removed at any time by clearing the App's data in your device settings or by uninstalling the App.
-- **Crash & Analytics Data:** Crash data in Firebase Crashlytics is automatically deleted after 90 days. Analytics data in Firebase Analytics is retained in accordance with Google's default data retention schedule.
-- **No User Accounts:** Because the App does not maintain user accounts or collect personal profiles, there is no personal account data stored on our servers to request deletion for.
+For residents of California and other US states with applicable consumer privacy laws:
+- We do not sell your personal information for monetary consideration.
+- Device identifiers processed for cross-context behavioral advertising by third-party ad networks can be managed or opted out of via the in-app consent preferences (**Settings > Legal > Ad Privacy Settings**) or through your operating system's global ad tracking settings (*Settings > Google > Ads > Delete advertising ID* on Android).
 
-## 8. Children's Privacy
+---
 
-The App is not directed toward children under 13 years of age (or the minimum age of consent in your jurisdiction). We do not knowingly collect personal identifiable information from children. If you believe that a child has provided us with personal information, please contact us immediately so we can remove it.
+## 7. Third-Party Services and Privacy Policies
 
-## 9. Hardware and Battery Disclaimer
+We partner with reputable third-party providers that adhere to international privacy standards. We encourage you to review their respective privacy practices:
 
-The App operates your device's physical vibration motor (haptic actuator). Continuous or prolonged operation of the vibration motor will consume battery power faster than normal usage and may cause your device to become warm.
+- **Google AdMob & Google Mobile Ads SDK:**  
+  [https://policies.google.com/technologies/ads](https://policies.google.com/technologies/ads)  
+  [https://policies.google.com/technologies/partner-sites](https://policies.google.com/technologies/partner-sites)
+- **Google Firebase (Crashlytics, Analytics, Remote Config):**  
+  [https://firebase.google.com/support/privacy](https://firebase.google.com/support/privacy)
+- **Google Play Services & Google Play Billing:**  
+  [https://policies.google.com/privacy](https://policies.google.com/privacy)
+- **Apple Privacy Policy (iOS):**  
+  [https://www.apple.com/legal/privacy/](https://www.apple.com/legal/privacy/)
 
-To assist with device health and battery preservation, the App includes an Auto-Stop Timer (configured by default to 5 minutes) that will automatically halt the vibration. You acknowledge and agree that you are responsible for monitoring your device's battery and temperature during extended use.
+---
 
-## 10. Changes to This Privacy Policy
+## 8. Data Retention and User Deletion Rights
 
-We may update this Privacy Policy periodically to reflect changes in our legal obligations, features, or advertising practices. Any updates will be posted with an updated "Last updated" date at the top of this document.
+- **Local Storage:** All app preferences, vibration history, and purchase flags stored on your device can be completely erased at any time by clearing the App's storage/cache in your device settings or by uninstalling the App.
+- **Crash Reports & Analytics:** Data stored in Firebase Crashlytics is automatically purged after 90 days. Firebase Analytics data is retained according to Google's standard retention schedules.
+- **No Remote User Accounts:** Because the App does not maintain user account databases, we do not store personal profiles or login records on any remote server.
 
-## 11. Contact Us
+---
 
-If you have any questions, concerns, or requests regarding this Privacy Policy, please contact us at:
+## 9. Children's Privacy
 
-- **Developer:** ranjit pahan
-- **Email:** [pahan.ranjit.0201@gmail.com](mailto:pahan.ranjit.0201@gmail.com)
+The App is designed and marketed for a general audience and is not directed at children under the age of 13 (or under 16 in the EEA). We do not knowingly collect personal identifiable information from children. If you believe that a minor has provided information through our third-party services without parental consent, please contact us so we can take immediate corrective measures.
+
+---
+
+## 10. Hardware and Device Health Disclaimer
+
+The App operates the device's physical haptic vibration motor at various frequencies and intensities. Continuous and prolonged usage will consume battery power and may cause the device to warm up.
+
+- **Auto-Stop Safety Timer:** The App includes a configurable Auto-Stop Timer (set by default to 5 minutes) designed to preserve battery and prevent motor strain.
+- Users are advised to monitor device temperature and avoid continuous, unattended operation on soft or heat-insulating surfaces.
+
+---
+
+## 11. Changes to This Privacy Policy
+
+We may update this Privacy Policy from time to time to reflect operational, legal, or regulatory requirements. Any modifications will be posted within the App and updated at our official privacy policy URL ([https://ranjit-git.github.io/vibrator-privacy-policy/](https://ranjit-git.github.io/vibrator-privacy-policy/)) with a revised "Last Updated" date. Continued use of the App following any changes indicates acceptance of the updated policy.
+
+---
+
+## 12. Contact Us
+
+If you have any questions, concerns, or inquiries regarding this Privacy Policy or our data practices, please contact:
+
+- **Developer:** ranjit pahan  
+- **Email:** [pahan.ranjit.0201@gmail.com](mailto:pahan.ranjit.0201@gmail.com)  
+- **Privacy Policy URL:** [https://ranjit-git.github.io/vibrator-privacy-policy/](https://ranjit-git.github.io/vibrator-privacy-policy/)
